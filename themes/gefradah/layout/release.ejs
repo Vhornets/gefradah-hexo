@@ -1,0 +1,69 @@
+<%- partial('_partial/header', {index: false}) %>
+<%- partial('_partial/navbar', {index: false, page: page}) %>
+
+<div class="block block--height-auto block--background-center-top parallax" style="background-image: url(<%= url_for('img/' + page.single_cover) %>);" data-speed="10">
+    <div class="block__overlay"></div>
+
+    <div class="release-gallery">
+        <% _.each(page.gallery, function(image) { %>
+            <%- image_tag('img/' + image.src, { width: image.width, height: image.height }) %>
+        <% }); %>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="release-single">
+                <div class="release-single__header">
+                    <div class="release-single__header-socials">
+                        <%- partial('_partial/socials', {classes: 'socials'}) %>
+                    </div>
+
+                    <div class="release-single__header-controls">
+                        <%- partial('_partial/release-menu') %>
+                    </div>
+                </div>
+
+                <div class="release-single__body">
+                    <div class="row">
+                        <% if(page.additional_links) { %>
+                            <div class="release-single__additional-links">
+                                <ul class="release-single__additional-links-list">
+                                    <% _.forEach(page.additional_links, function(link, name) { %>
+                                        <li>
+                                            <a href="<%= link %>" target="_blank">
+                                                <%= name %>
+                                            </a>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        <% } %>
+
+                        <div class="release-single__playlist">
+                            <p class="release__release-date">
+                                //<%= page.release_date %>
+                            </p>
+
+                            <p><small>Tracks in the playlist are clickable. Don't be shy.</small></p>
+
+                            <ul class="release__playlist" id="playlist">
+                                <li>Loading playlist...</li>
+                            </ul>
+                            
+                            <div class="release-single__content">
+                                <%- page.content %>
+                            </div>
+                        </div>
+                        
+                        <div class="release-single__player">
+                            <iframe id="player" width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=<%= page.soundcloud_playlist %>&visual=true"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- partial('_partial/photoswipe-gallery') %>
+<%- partial('_partial/footer', {index: false}) %>

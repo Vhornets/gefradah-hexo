@@ -1,0 +1,56 @@
+<ul class="list-inline">
+    <li class="dropdown">
+        <a class="btn-white btn-icon" href="#" data-toggle="dropdown">
+            Download
+            <i class="icon download-white-small"></i>                                   
+        </a>     
+
+        <ul class="dropdown-menu">
+            <% _.forEach(page.downloads, function(link, name) { %>
+                <li>
+                    <a href="<%= link.url %>" class="btn-icon" target="_blank" onclick="ga('send', 'event', 'Music', 'Downloaded', {'page': '<%= url %>'});">
+                        <%= name %>
+                        <i class="icon <%= link.icon %>"></i>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a class="btn-white btn-icon" href="#" data-toggle="dropdown">
+            Share
+            <i class="icon share-white-small"></i>                                   
+        </a>     
+
+        <ul class="dropdown-menu">
+            <li>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<%= url %>" class="btn-icon" target="_blank">
+                    Facebook
+                    <i class="icon facebook-white half-size"></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/home?status=<%= url %>" class="btn-icon" target="_blank">
+                    Twitter
+                    <i class="icon twitter-white half-size"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="http://vk.com/share.php?url=<%= url %>" class="btn-icon" target="_blank">
+                    Vkontakte
+                    <i class="icon vkontakte-white half-size"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a class="js-open-gallery btn-white btn-icon" href="#">
+            Gallery
+            <i class="icon view-white-small"></i>
+        </a>                                    
+    </li>
+</ul>

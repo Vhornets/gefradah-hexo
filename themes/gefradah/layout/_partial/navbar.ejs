@@ -1,0 +1,62 @@
+<div class="navbar navbar-default" data-spy="affix" data-offset-top="<% if(is_home()) { %>300<% } else { %>50<% } %>">
+    <div class="container">
+        <div class="navbar-header">
+            <% if(index) { %>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" href="/">
+                    <%= config.title %>
+                </a>
+            <% } else { %>
+                <a href="/" class="navbar-close">
+                    <i class="icon arrow-back-white"></i>
+                </a>
+
+                <a class="navbar-brand navbar-brand--title" href="/">
+                    <% if(is_post()) { %>
+                        <%= page.artist %> - <%= page.title %>
+                    <% } else { %>
+                        <%= config.title %> - <%= page.title %>
+                    <% } %>
+                </a>
+            <% } %>
+
+            <% if(index) { %>
+                <%- partial('socials', {classes: 'menu-socials'}) %>
+            <% } %>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-menu">
+            <ul class="main-menu nav navbar-nav navbar-right">
+                <li>
+                    <%- partial('socials', {classes: 'menu-socials menu-socials menu-socials--small-screen'}) %>
+                </li>
+                
+                <% _.forEach(theme.menu, function(link, name) { %>
+                    <li>
+                        <a href="<%= link %>">
+                            <%= name %>
+                        </a>
+                    </li>
+                <% }); %>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Releases <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <% site.posts.sort('date', -1).each(function(post, i) { %>
+                            <li>
+                                <a href="<%= url_for(post.path) %>">
+                                    <%= post.artist %> - <%= post.title %>
+                                </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

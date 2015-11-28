@@ -1,0 +1,27 @@
+<%- partial('_partial/header', {index: true}) %>
+<%- partial('_partial/navbar', {index: true}) %>
+
+<% site.posts.sort('date', -1).each(function(post, i) { %>
+    <div class="block" id="release_<%= i %>" style="background-image: url(<%= url_for('img/' + post.cover) %>);">
+        <div class="block__overlay"></div>
+
+        <div class="release-preview__container">
+            <div class="release-preview">
+                <div class="release-preview__title">
+                    <a class="release-preview__link <% if(i % 2 === 0) { %>release-preview__link--align-right<% } else {%>release-preview__link--align-left<% } %>" href="<%= url_for(post.path) %>">
+                        <p class="release-preview__release-project">
+                            <%= post.artist %>
+                        </p>
+                        <p class="release-preview__release-name">
+                            <%= post.title %>
+                        </p>
+
+                        <i class="icon zoom-white"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<% }); %>
+
+<%- partial('_partial/footer', {index: true}) %>

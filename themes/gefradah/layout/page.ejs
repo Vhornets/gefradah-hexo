@@ -1,0 +1,28 @@
+<%- partial('_partial/header', {index: false}) %>
+<%- partial('_partial/navbar', {index: false, page: page}) %>
+
+<div class="block block--height-auto block--background-center-top parallax" style="background-image: url(<%= url_for('img/' + page.cover) %>);" >
+    <div class="block__overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="release-single <% if(page.tiny) { %>release-single--tiny<% } %>">
+                <div class="release-single__header">
+                    <div class="release-single__header-socials">
+                        <%- partial('_partial/socials', {classes: 'socials'}) %>
+                    </div>
+                </div>
+
+                <div class="release-single__body">
+                    <div class="row">
+                        <div class="page__content">
+                            <%- page.content %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- partial('_partial/footer', {index: false}) %>

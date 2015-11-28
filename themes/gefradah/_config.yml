@@ -1,0 +1,14 @@
+# Header
+menu:
+  Subscribe to e-mail newsletter: '/Email-subscription'
+  Write me a few words: '/contact'
+  Cemerald art: 'http://cemerald.deviantart.com/'
+
+# social link
+socials:
+    vkontakte: http://vk.com/gefradah
+    facebook: https://www.facebook.com/Gefradah
+    soundcloud: https://soundcloud.com/gefradah
+    bandcamp: http://gefradah.bandcamp.com/
+    lastfm: http://www.lastfm.ru/music/Gefradah
+default_share_image: releases/dead-state-best-conditions-cover-front.jpg
